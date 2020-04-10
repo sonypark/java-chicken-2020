@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class OrderMenu {
     public static final String SPACE = " ";
     Table table;
@@ -41,6 +43,23 @@ public class OrderMenu {
 
     public int calculateTotalPrice() {
         return menu.getPrice() * amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof OrderMenu))
+            return false;
+        OrderMenu orderMenu = (OrderMenu)o;
+        return amount == orderMenu.amount &&
+            Objects.equals(table, orderMenu.table) &&
+            Objects.equals(menu, orderMenu.menu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(table, menu, amount);
     }
 
     @Override

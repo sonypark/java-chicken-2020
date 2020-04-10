@@ -8,7 +8,7 @@ public class ChickenRestaurant {
     private static final int FIRST_MENU = 0;
     private static final int MAX_ORDER_NUMBER_IN_CATEGORY = 99;
 
-    List<OrderMenu> orderMenus = new ArrayList<>();
+    private List<OrderMenu> orderMenus = new ArrayList<>();
 
     public void addToOrderList(Menu selectedMenu, int tableNumber, int menuAmount) {
         validateMaxAmountOfCategoryMenu(selectedMenu, menuAmount);
