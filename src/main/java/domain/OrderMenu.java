@@ -1,7 +1,6 @@
 package domain;
 
 public class OrderMenu {
-    public static final int MAX_ORDER_NUMBER_IN_A_CATEGORY = 99;
     public static final String SPACE = " ";
     Table table;
     Menu menu;

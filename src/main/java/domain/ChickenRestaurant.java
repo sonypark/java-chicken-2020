@@ -6,11 +6,26 @@ import java.util.stream.Collectors;
 
 public class ChickenRestaurant {
     private static final int FIRST_MENU = 0;
+    private static final int MAX_ORDER_NUMBER_IN_A_CATEGORY = 99;
 
     List<OrderMenu> orderMenus = new ArrayList<>();
 
     public void addToOrderList(Menu selectedMenu, int tableNumber, int menuAmount) {
+        validateMaxAmountOfCategoryMenu(selectedMenu, menuAmount);
         orderMenus.add(new OrderMenu(selectedMenu, new Table(tableNumber), menuAmount));
+    }
+
+    private void validateMaxAmountOfCategoryMenu(Menu menu, int menuAmount) {
+        if (MAX_ORDER_NUMBER_IN_A_CATEGORY < sumAmountOfCategoryMenu(menu, menuAmount)) {
+            throw new IllegalArgumentException("같은 카테고리 메뉴는 99까지만 주문 가능합니다.");
+        }
+    }
+
+    private int sumAmountOfCategoryMenu(Menu menu, int menuAmount) {
+        return orderMenus.stream()
+            .filter(orderMenu -> orderMenu.getMenu().isSameCategory(menu.getCategory()))
+            .map(OrderMenu::getAmount)
+            .reduce(menuAmount, Integer::sum);
     }
 
     public Menu selectMenu(List<Menu> menus, int menuNumber) {

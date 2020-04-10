@@ -10,12 +10,16 @@ public enum Category {
         this.name = name;
     }
 
-    public boolean isChicken(Category category) {
-        return CHICKEN == category;
+    public boolean isChicken() {
+        return CHICKEN == this;
     }
 
-    public boolean isBeverage(Category category) {
-        return BEVERAGE == category;
+    public boolean isBeverage() {
+        return BEVERAGE == this;
+    }
+
+    public boolean isSameCategory(Category category) {
+        return this == category;
     }
 
     @Override

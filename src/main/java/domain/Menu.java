@@ -14,7 +14,7 @@ public class Menu {
     }
 
     public boolean isChicken() {
-        return category.isChicken(this.category);
+        return category.isChicken();
     }
 
     public boolean isSameNumber(int number) {
@@ -22,15 +22,15 @@ public class Menu {
     }
 
     public boolean isSameCategory(Category category) {
-        return this.category.isBeverage(category) | this.category.isChicken(category);
-    }
-
-    public int getNumber() {
-        return number;
+        return this.category.isSameCategory(category);
     }
 
     public Category getCategory() {
         return category;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public int getPrice() {
