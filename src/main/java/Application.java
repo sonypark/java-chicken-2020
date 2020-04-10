@@ -1,21 +1,32 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import controller.ChickenRestaurantController;
+import controller.PaymentController;
+import domain.ChickenRestaurant;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
-
 public class Application {
-    // TODO 구현 진행
+    public static final int ORDER = 1;
+    public static final int PAY = 2;
+    public static final int EXIT = 3;
+
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        ChickenRestaurant chickenRestaurant = new ChickenRestaurant();
+        ChickenRestaurantController chickenRestaurantController = new ChickenRestaurantController(chickenRestaurant);
+        PaymentController paymentController = new PaymentController(chickenRestaurant);
 
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        while (true) {
+            OutputView.printMainScreen();
+            int input = InputView.inputMainProcess();
+            if (input == ORDER) {
+                chickenRestaurantController.run();
+            }
+            if (input == PAY) {
+                paymentController.run();
+            }
+            if (input == EXIT) {
+                break;
+            }
+        }
     }
+
 }

@@ -13,6 +13,14 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isChicken() {
+        return category.isChicken(this.category);
+    }
+
+    public boolean isSameNumber(int number) {
+        return this.number == number;
+    }
+
     public boolean isSameCategory(Category category) {
         return this.category.isBeverage(category) | this.category.isChicken(category);
     }
@@ -23,6 +31,14 @@ public class Menu {
 
     public Category getCategory() {
         return category;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
