@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ChickenRestaurant {
     private static final int FIRST_MENU = 0;
-    private static final int MAX_ORDER_NUMBER_IN_A_CATEGORY = 99;
+    private static final int MAX_ORDER_NUMBER_IN_CATEGORY = 99;
 
     List<OrderMenu> orderMenus = new ArrayList<>();
 
@@ -16,7 +16,7 @@ public class ChickenRestaurant {
     }
 
     private void validateMaxAmountOfCategoryMenu(Menu menu, int menuAmount) {
-        if (MAX_ORDER_NUMBER_IN_A_CATEGORY < sumAmountOfCategoryMenu(menu, menuAmount)) {
+        if (MAX_ORDER_NUMBER_IN_CATEGORY < sumAmountOfCategoryMenu(menu, menuAmount)) {
             throw new IllegalArgumentException("같은 카테고리 메뉴는 99까지만 주문 가능합니다.");
         }
     }
@@ -35,13 +35,13 @@ public class ChickenRestaurant {
             .get(FIRST_MENU);
     }
 
-    public List<Integer> getOccupiedTableNumbers() {
+    public List<Integer> findOccupiedTableNumbers() {
         return orderMenus.stream()
             .map(OrderMenu::getTableNumber)
             .collect(Collectors.toList());
     }
 
-    public List<OrderMenu> getTableToPay(int tableNumberToPay) {
+    public List<OrderMenu> findTableToPay(int tableNumberToPay) {
         return orderMenus.stream()
             .filter(orderMenu -> orderMenu.containTableNumber(tableNumberToPay))
             .collect(Collectors.toList());

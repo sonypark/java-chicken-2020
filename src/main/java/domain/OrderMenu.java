@@ -39,7 +39,7 @@ public class OrderMenu {
         return table.getNumber() == tableNumber;
     }
 
-    public int getTotalPrice() {
+    public int calculateTotalPrice() {
         return menu.getPrice() * amount;
     }
 

@@ -13,8 +13,8 @@ public class Pay {
     private static final int ZERO = 0;
 
     public double getPayment(int paymentType, List<OrderMenu> orderMenus) {
-        int chickenDiscount = getChickenDiscount(orderMenus);
-        int payMoney = getTotalMoneyToPay(orderMenus);
+        int chickenDiscount = calculateChickenDiscount(orderMenus);
+        int payMoney = calculateTotalMoneyToPay(orderMenus);
 
         double payment = ZERO;
 
@@ -30,8 +30,8 @@ public class Pay {
         return payment;
     }
 
-    private int getChickenDiscount(List<OrderMenu> orderMenuList) {
-        int chickenNumber = getNumberOfChickenMenu(orderMenuList);
+    private int calculateChickenDiscount(List<OrderMenu> orderMenuList) {
+        int chickenNumber = calculateNumberOfChickenMenu(orderMenuList);
         int discountQuantity = chickenNumber / CHICKEN_DISCOUNT_UNIT;
         if (discountQuantity > ZERO) {
             return discountQuantity * CHICKEN_DISCOUNT;
@@ -39,11 +39,11 @@ public class Pay {
         return ZERO;
     }
 
-    private int getNumberOfChickenMenu(List<OrderMenu> orderMenus) {
+    private int calculateNumberOfChickenMenu(List<OrderMenu> orderMenus) {
         return orderMenus.stream().map(OrderMenu::getChickenMenuAmount).reduce(ZERO, Integer::sum);
     }
 
-    private int getTotalMoneyToPay(List<OrderMenu> orderMenuList) {
-        return orderMenuList.stream().map(OrderMenu::getTotalPrice).reduce(ZERO, Integer::sum);
+    private int calculateTotalMoneyToPay(List<OrderMenu> orderMenuList) {
+        return orderMenuList.stream().map(OrderMenu::calculateTotalPrice).reduce(ZERO, Integer::sum);
     }
 }

@@ -19,7 +19,7 @@ public class ChickenRestaurantController {
 
     public void run() {
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables, chickenRestaurant.getOccupiedTableNumbers());
+        OutputView.printTables(tables, chickenRestaurant.findOccupiedTableNumbers());
         final int tableNumber = InputView.inputTableNumber();
 
         final List<Menu> menus = MenuRepository.menus();

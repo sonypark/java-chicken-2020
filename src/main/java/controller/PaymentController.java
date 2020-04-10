@@ -21,7 +21,7 @@ public class PaymentController {
         showOccupiedTable();
 
         int tableNumberToPay = InputView.inputTableNumberToPay();
-        List<OrderMenu> orderMenus = chickenRestaurant.getTableToPay(tableNumberToPay);
+        List<OrderMenu> orderMenus = chickenRestaurant.findTableToPay(tableNumberToPay);
         if (orderMenus.isEmpty()) {
             System.out.println("주문 내역이 없는 테이블 입니다.");
             return;
@@ -42,7 +42,7 @@ public class PaymentController {
 
     private void showOccupiedTable() {
         final List<Table> tables = TableRepository.tables();
-        List<Integer> occupiedTableNumbers = chickenRestaurant.getOccupiedTableNumbers();
+        List<Integer> occupiedTableNumbers = chickenRestaurant.findOccupiedTableNumbers();
         OutputView.printTables(tables, occupiedTableNumbers);
     }
 }
