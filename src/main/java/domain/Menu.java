@@ -13,6 +13,18 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isSameCategory(Category category) {
+        return this.category.isBeverage(category) | this.category.isChicken(category);
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
