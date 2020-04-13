@@ -31,10 +31,6 @@ public class Menu {
         return category;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
     public int getPrice() {
         return price;
     }

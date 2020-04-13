@@ -40,4 +40,16 @@ class PayTest {
         //when, then
         assertThat(new Pay().getPayment(CASH, Arrays.asList(orderMenu))).isEqualTo(15_200);
     }
+
+    @Test
+    @DisplayName("주문 내역 없을 때 계산")
+    void calculate_when_no_order() {
+        //given
+        List<Menu> menus = MenuRepository.menus();
+        Menu menu = menus.get(0);
+        OrderMenu orderMenu = new OrderMenu(menu, new Table(1), 0);
+
+        //when, then
+        assertThat(new Pay().getPayment(CASH, Arrays.asList(orderMenu))).isEqualTo(0);
+    }
 }

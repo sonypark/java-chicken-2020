@@ -14,10 +14,6 @@ public class OrderMenu {
         this.amount = amount;
     }
 
-    public Table getTable() {
-        return table;
-    }
-
     public Menu getMenu() {
         return menu;
     }
