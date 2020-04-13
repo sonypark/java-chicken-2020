@@ -14,10 +14,6 @@ public enum Category {
         return CHICKEN == this;
     }
 
-    public boolean isBeverage() {
-        return BEVERAGE == this;
-    }
-
     public boolean isSameCategory(Category category) {
         return this == category;
     }
