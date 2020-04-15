@@ -1,11 +1,11 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import java.util.List;
+
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+import domain.table.Table;
+import domain.table.TableRepository;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
     // TODO 구현 진행
