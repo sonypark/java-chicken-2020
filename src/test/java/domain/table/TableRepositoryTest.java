@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.discount.ChickenDiscount;
 import domain.menu.MenuRepository;
 import domain.payment.CashPayment;
 import domain.payment.CreditCardPayment;
@@ -56,7 +57,7 @@ class TableRepositoryTest {
         //when
         table.order(MenuRepository.menus().get(1), 1);
         //then
-        assertThat(table.payment(new CreditCardPayment())).isEqualTo(16_000);
+        assertThat(table.payment(new CreditCardPayment(), new ChickenDiscount())).isEqualTo(16_000);
     }
 
     @Test
@@ -67,6 +68,18 @@ class TableRepositoryTest {
         //when
         table.order(MenuRepository.menus().get(1), 1);
         //then
-        assertThat(table.payment(new CashPayment())).isEqualTo(15_200);
+        assertThat(table.payment(new CashPayment(), new ChickenDiscount())).isEqualTo(15_200);
     }
+
+    @Test
+    @DisplayName("테이블 주문 내역 현금 할인 + 치킨 중복 할인 적용")
+    void payment_byCash_withChickenDiscount() {
+        //given
+        Table table = new Table(1);
+        //when
+        table.order(MenuRepository.menus().get(1), 10);
+        //then
+        assertThat(table.payment(new CashPayment(), new ChickenDiscount())).isEqualTo(142_500);
+    }
+
 }

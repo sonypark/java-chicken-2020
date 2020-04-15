@@ -2,8 +2,8 @@ package domain.table;
 
 import java.util.Objects;
 
+import domain.discount.Discount;
 import domain.menu.Menu;
-import domain.order.Order;
 import domain.order.Orders;
 import domain.payment.Payment;
 
@@ -52,11 +52,11 @@ public class Table {
         return Integer.toString(number);
     }
 
-    public double payment(Payment payment) {
+    public double payment(Payment payment, Discount discount) {
         return orders.values()
             .stream()
-            .mapToDouble(Order::price)
-            .map(payment::pay)
+            .map(discount::discount)
+            .mapToDouble(payment::pay)
             .sum();
     }
 }
