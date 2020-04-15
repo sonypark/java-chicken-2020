@@ -22,6 +22,14 @@ public class Table {
         orders.addOrder(menu, quantity);
     }
 
+    public boolean hasOrder() {
+        return !orders.isEmpty();
+    }
+
+    public Orders getOrder() {
+        return orders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
