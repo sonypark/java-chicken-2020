@@ -22,4 +22,8 @@ public class Order {
     public double price() {
         return menu.getPrice() * quantity;
     }
+
+    public boolean isChicken() {
+        return menu.isChicken();
+    }
 }
