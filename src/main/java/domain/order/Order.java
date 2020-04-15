@@ -18,4 +18,8 @@ public class Order {
     public int getQuantity() {
         return quantity;
     }
+
+    public double price() {
+        return menu.getPrice() * quantity;
+    }
 }

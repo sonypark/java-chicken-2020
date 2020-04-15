@@ -25,4 +25,13 @@ class OrderTest {
         //then
         assertThat(order.getQuantity()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("주문 메뉴 가격")
+    void price() {
+        // given
+        Order order = new Order(MenuRepository.menus().get(1), 1);
+        //then
+        assertThat(order.price()).isEqualTo(16_000);
+    }
 }

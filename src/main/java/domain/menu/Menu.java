@@ -41,4 +41,8 @@ public class Menu {
     public int hashCode() {
         return Objects.hash(number, name, category, price);
     }
+
+    public double getPrice() {
+        return price;
+    }
 }

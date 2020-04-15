@@ -3,7 +3,9 @@ package domain.table;
 import java.util.Objects;
 
 import domain.menu.Menu;
+import domain.order.Order;
 import domain.order.Orders;
+import domain.payment.Payment;
 
 public class Table {
     private final int number;
@@ -48,5 +50,13 @@ public class Table {
     @Override
     public String toString() {
         return Integer.toString(number);
+    }
+
+    public double payment(Payment payment) {
+        return orders.values()
+            .stream()
+            .mapToDouble(Order::price)
+            .map(payment::pay)
+            .sum();
     }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import domain.menu.MenuRepository;
+import domain.payment.CashPayment;
+import domain.payment.CreditCardPayment;
 
 class TableRepositoryTest {
 
@@ -44,5 +46,27 @@ class TableRepositoryTest {
         table.order(MenuRepository.menus().get(1), 1);
         //then
         assertThat(table.hasOrder()).isTrue();
+    }
+
+    @Test
+    @DisplayName("테이블 주문 내역 카드 계산")
+    void payment_byCreditCard() {
+        //given
+        Table table = new Table(1);
+        //when
+        table.order(MenuRepository.menus().get(1), 1);
+        //then
+        assertThat(table.payment(new CreditCardPayment())).isEqualTo(16_000);
+    }
+
+    @Test
+    @DisplayName("테이블 주문 내역 현금 계산")
+    void payment_byCash() {
+        //given
+        Table table = new Table(1);
+        //when
+        table.order(MenuRepository.menus().get(1), 1);
+        //then
+        assertThat(table.payment(new CashPayment())).isEqualTo(15_200);
     }
 }
