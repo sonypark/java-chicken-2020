@@ -1,21 +1,11 @@
-import java.util.List;
-
-import domain.menu.Menu;
-import domain.menu.MenuRepository;
-import domain.table.Table;
-import domain.table.TableRepository;
-import view.InputView;
-import view.OutputView;
+import controller.ChickenRestaurantController;
+import service.ChickenRestaurantService;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
+        new ChickenRestaurantController(new ChickenRestaurantService()).run();
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
     }
 }

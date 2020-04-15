@@ -15,10 +15,6 @@ public class Order {
         this.quantity += quantity;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public double price() {
         return menu.getPrice() * quantity;
     }
@@ -26,4 +22,13 @@ public class Order {
     public boolean isChicken() {
         return menu.isChicken();
     }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
 }
