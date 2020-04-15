@@ -2,15 +2,24 @@ package domain.table;
 
 import java.util.Objects;
 
+import domain.menu.Menu;
+import domain.order.Orders;
+
 public class Table {
     private final int number;
+    private final Orders orders;
 
     public Table(final int number) {
         this.number = number;
+        this.orders = new Orders();
     }
 
     public boolean isNumber(int number) {
         return this.number == number;
+    }
+
+    public void order(Menu menu, int quantity) {
+        orders.addOrder(menu, quantity);
     }
 
     @Override
