@@ -53,10 +53,12 @@ public class Table {
     }
 
     public double payment(Payment payment, Discount discount) {
-        return orders.values()
+        double price = orders.values()
             .stream()
             .map(discount::discount)
             .mapToDouble(payment::pay)
             .sum();
+        orders.clear();
+        return price;
     }
 }

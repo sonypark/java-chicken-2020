@@ -26,4 +26,8 @@ public class Orders {
     public Collection<Order> values() {
         return Collections.unmodifiableCollection(orders.values());
     }
+
+    public void clear() {
+        orders.clear();
+    }
 }
